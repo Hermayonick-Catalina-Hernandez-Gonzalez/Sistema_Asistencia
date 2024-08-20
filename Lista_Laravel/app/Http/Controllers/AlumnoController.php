@@ -18,10 +18,10 @@ use Illuminate\Support\Facades\Http;
 class AlumnoController extends Controller
 {
     //Autenticar
-    /*public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
     public function index()
     {

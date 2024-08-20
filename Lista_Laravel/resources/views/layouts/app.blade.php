@@ -78,49 +78,31 @@
                                 @endif
                             </ul>
                         </div>
-                    </nav>  
+                    </nav>
                 @endauth
-                
+
                 {{-- <main class="col-md-9 col-lg-10" style="background-color: #2e1b97"> --}}
 
                     {{-- si el usuario esta loguead es <main class="col-md-9 col-lg-10" style="background-color: #F7F7F7"> sino será <main class="col" style="background-color: #F7F7F7"> --}}
                     @auth
                         <main class="col-md-9 col-lg-10" style="background-color: #F7F7F7">
                     @else
-                        <main class="col" style="background-color: #F7F7F7">
+                        <main class="col" style="background-color: #ffffff">
                     @endauth
 
                     @guest
                         <nav class="navbar navbar-expand-lg mt-4 p-0 mx-5">
                             <div class="container-fluid text-center">
-                                {{-- Hacer que el texto no se pueda seleccionar --}}
-                                
-                                <p class="navbar-brand fw-bold fs-1" 
+                                <p class="navbar-brand fw-bold fs-1"
                                     style="color: #080a57; width:100%; webkit-user-select: none; moz-user-select: none; ms-user-select: none; user-select: none;">
                                     Lista de Asistencia
                                 </p>
-
-                                <div class="collapse navbar-collapse" id="navbarNav">
-                                    <ul class="navbar-nav ms-auto">
-                                        {{-- @if (Route::has('login'))
-                                        <li class="ms-3 nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
-                                        </li>
-                                        @endif
-                                         --}}
-                                        {{-- @if (Route::has('register'))
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
-                                            </li>
-                                        @endif --}}
-                                    </ul>
-                                </div>
                             </div>
-                        </nav>   
+                        </nav>
                     @else
                     <nav class="navbar navbar-expand-lg mt-4 p-0">
                         <div class="container-fluid">
-                            
+
                             @if (is_numeric(basename(request()->path())))
                                 <p class="navbar-brand fw-semibold fs-3 mb-0" >Asistencias</p>
                             @elseif (request()->path() == 'clases-de-alumno')
@@ -136,17 +118,17 @@
                                         @if (Auth::user()->rol == 'admin')
                                         <a class="nav-link text-uppercase" >  {{ Auth::user()->nombre }} </a>
                                         @else
-                                        <a class="nav-link text-uppercase" >  {{ Auth::user()->nombre }} {{ Auth::user()->apellido_paterno }} {{ Auth::user()->apellido_materno }}</a> 
+                                        <a class="nav-link text-uppercase" >  {{ Auth::user()->nombre }} {{ Auth::user()->apellido_paterno }} {{ Auth::user()->apellido_materno }}</a>
                                         @endif
                                     </li>
                                     <div class="vr mx-2"></div>
                                     <li class="ms-3 nav-item">
-                                        
+
                                         <a class="btn btn-light shadow-sm" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             {{ __('Cerrar sesión') }}
                                         </a>
-        
+
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>
@@ -154,9 +136,9 @@
                                 </ul>
                             </div>
                         </div>
-                    </nav>   
+                    </nav>
                     @endguest
-                    
+
 
                     @yield('content')
                     @stack('scripts')
@@ -164,12 +146,12 @@
 
                 </main>
 
-                
+
             </div>
         </div>
     </div>
 
-    
+
     <script src=https://code.jquery.com/jquery-3.5.1.js></script>
     <script src=https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js></script>
     <script src=https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js></script>
@@ -181,7 +163,7 @@
     <script src=https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js></script>
     <script src=https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js></script>
     <script src=https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js></script>
-      
+
     <script>
       $(document).ready(function() {
           var table = $('#tabla').DataTable( {
@@ -238,9 +220,9 @@
               { extend: 'excel', className: 'btn-success btn-sm' },
               { extend: 'pdf', className: 'btn-danger btn-sm' },
                             ]
-              
+
           } );
-      
+
           table.buttons().container()
               .appendTo( '#table_users_wrapper .col-md-6:eq(0)' );
       } );
@@ -281,7 +263,7 @@
         // Captura el evento de envío del formulario
         $('.delete-form').submit(function(event) {
         event.preventDefault(); // Previene el envío del formulario
-        
+
         // Muestra la alerta de confirmación
         Swal.fire({
             title: '¿Estás seguro?',

@@ -16,13 +16,14 @@ use App\Models\AlumnoClase;
 class ClasesController extends Controller
 {
     //Autenticar
-    /*public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
     //Mostrar vista con las clases creadas por el profesor loggeado, tambien debe mostrar todos los alumnos
-    public function index () {
+    public function index()
+    {
         $profesorId = auth()->user()->profesor->id;
         $clases = Profesor::find($profesorId)->clases()->with(['profesores', 'horarios'])->get();
         $alumnos = Alumno::all();

@@ -4,7 +4,7 @@
 
 <!-- MODAL -->
 <div class="modal fade modal-lg" id="static-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="static-modalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="background: #55dfc8;">
+    <div class="modal-dialog" style="background: #fefefe;">
         <form method="POST" action="{{ route('clase.store') }}" novalidate id="clase-form">
         @csrf
         <div class="modal-content">
@@ -14,7 +14,7 @@
         </div>
         <div class="modal-body">
             <div class="row g-3">
-               
+
                 <label class="fs-5 fw-semibold mt-4 mb-2">Información de contacto</label>
 
                 <div class="col">
@@ -51,7 +51,7 @@
 
                 <hr class="mt-5">
                 <label class="fs-5 fw-semibold">Horario</label>
-    
+
                 <div class="col">
                     <div class="row">
                         <div class="col text-center">
@@ -264,7 +264,7 @@
                         </div>
                     </div>
                 </div>
-            </div>   
+            </div>
         </div>
         <div class="modal-footer mt-4">
             <button type="button" class="btn btn-outline-danger shadow-sm" data-bs-dismiss="modal">Cancelar</button>
@@ -277,7 +277,7 @@
 
 <!-- MODAL PARA AGREGAR ALUMNOS -->
 <div class="modal fade" id="agregarAlumnosModal" tabindex="-1" aria-labelledby="agregarAlumnosModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="background: #55dfc8;">
+    <div class="modal-dialog" style="background: #ffffff;">
         <div class="modal-content">
             <form method="POST" action="{{ route('clase.agregarAlumnos') }}" id="tuFormulario">
                 @csrf
@@ -295,7 +295,7 @@
                                 </option>
                             @endforeach
                         </select>
-                        
+
                     </div>
                     <div class="form-group mt-3">
                         <label for="alumnosAgregados">Alumnos agregados:</label>
@@ -328,7 +328,7 @@
                         Añadir nueva clase
                 </button>
             </div>
-            
+
             <div class="card my-3 rounded-3 ">
                 <div class="card-body">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive overflow-auto" id="table_users_wrapper">
@@ -360,7 +360,7 @@
                                             <form method="POST" action="{{ route('clase.destroy', $clase->id) }}" class="delete-form">
                                                 @csrf
                                                 <button type="submit" class="btn btn-sm btn-danger me-2">Eliminar</button>
-                                            </form> 
+                                            </form>
                                             <button type="button" class="btn btn-sm btn-primary me-2" data-bs-toggle="modal" data-bs-target="#agregarAlumnosModal" data-clase-id="{{ $clase->id }}">
                                                 Agregar alumnos
                                             </button>
@@ -375,7 +375,7 @@
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="horarioModal{{ $clase->id }}" tabindex="-1" aria-labelledby="horarioModalLabel{{ $clase->id }}" aria-hidden="true">
-                                                <div class="modal-dialog" style="background: #55dfc8;">
+                                                <div class="modal-dialog" style="background: #ffffff;">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" style="width:100%;" id="horarioModalLabel{{ $clase->id }}">Horario de la clase</h5>
@@ -411,7 +411,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        
+
                     </div>
                 </div>
             </div>
@@ -512,12 +512,12 @@ $(document).ready(function(){
     $('#alumnosSelect').change(function(){
         var alumnoId = $(this).val();
         var alumnoNombre = $('#alumnosSelect option:selected').text();
-        
+
         // Verificar si el alumno ya ha sido agregado
         if ($('#alumnosAgregados li[data-id="' + alumnoId + '"]').length === 0) {
             // Agregar el alumno a la lista dentro del modal
             $('#alumnosAgregados').append(
-                '<li class="list-group-item d-flex justify-content-between align-items-center" data-id="' + alumnoId + '">' + 
+                '<li class="list-group-item d-flex justify-content-between align-items-center" data-id="' + alumnoId + '">' +
                 alumnoNombre + ' <button type="button" class="btn btn-danger btn-sm eliminar-alumno">Eliminar</button></li>' +
                 '<input name="alumnos_seleccionados[]" value="' + alumnoId + '" hidden>'
             );

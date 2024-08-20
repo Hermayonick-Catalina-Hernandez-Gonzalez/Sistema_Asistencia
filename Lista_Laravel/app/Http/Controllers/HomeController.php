@@ -22,7 +22,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index() {
+    public function index()
+    {
         // dashboard solo puede ser visto por profesores         @if (Auth::user()->rol == 'profesor') 
         if (Auth::user()->rol == 'profesor') {
             return redirect()->route('clase.index');

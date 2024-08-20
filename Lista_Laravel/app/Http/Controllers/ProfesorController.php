@@ -35,7 +35,6 @@ class ProfesorController extends Controller
             'password' => bcrypt($request->password),
             'rol' => 'profesor',
         ]);
-        $user->save();
     
         // Utiliza la relación para crear un nuevo profesor asociado a este usuario
         $profesor = $user->profesor()->create([
