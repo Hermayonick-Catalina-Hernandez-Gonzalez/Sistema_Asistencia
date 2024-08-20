@@ -2,7 +2,7 @@ import cv2
 import os
 import numpy as np
 
-#Url donde se encuetra las imagenes de los usuarios
+# Url donde se encuetra las imagenes de los usuarios
 dataPath = "c:/Users/herca/OneDrive/Documentos/Lista de asistencia Final/Sistemas-Inteligentes/Face detection/Data"
 
 listaPersonas = os.listdir(dataPath)
@@ -24,7 +24,7 @@ for nameDir in listaPersonas:
     
     label = label + 1
 
-cv2.destroyAllWindows
+cv2.destroyAllWindows()
 
 face_recognizer = cv2.face.LBPHFaceRecognizer_create()
 
@@ -33,4 +33,3 @@ face_recognizer.train(faceData, np.array(labels))
 
 face_recognizer.write('Modelo_Rostros_2024.xml')
 print('Modelo entrenado')
-
